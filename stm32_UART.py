@@ -1,15 +1,17 @@
-import bisect
-import json
-import os
-import re
+# import bisect
+# import json
+# import os
+# import re
 import time
 from datetime import datetime
-from os import path
-from sys import displayhook
 
-import pandas as pd  # sudo apt-get install python3-pandas
+# import pandas as pd  # sudo apt-get install python3-pandas
 import serial
 import serial.tools.list_ports
+
+# from os import path
+# from sys import displayhook
+
 
 log_file = "test.log"
 
