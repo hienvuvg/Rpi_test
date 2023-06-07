@@ -69,7 +69,7 @@ while True:
         #         data = uart_buff
         #         save_packet_to_file(log_file, log_time, uart_buff)  # Save to log file
         #     if uart_buff[0] != "S":
-        print(uart_buff)
+        print(uart_buff, end=" ")
 
     except Exception:
         print("Retrying...")
