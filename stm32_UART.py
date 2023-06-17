@@ -43,13 +43,24 @@ while True:
     # if True:
     try:
         # Catch the data from UART
-        uart_buff = str(serial_port.readline(), "utf8")
+        uart_buff = str(serial_port.readline(), "utf8")[:-1]
 
         time_now = datetime.now()
         # charge_time = time_now.replace(hour=15, minute=27, second=30, microsecond=0)
         # return_time = time_now.replace(hour=15, minute=28, second=30, microsecond=0)
         # stop_time   = time_now.replace(hour=15, minute=29, second=30, microsecond=0)
         log_time = time_now.strftime(log_time_format)
+
+        if uart_buff.find("F") != -1:
+            # print("The string contains 'F'")
+            message = " ==> Failed"
+        elif uart_buff.find("t") != -1:
+            message = " -> Test"
+        elif uart_buff.find("-1") != -1:
+            message = " ==> Anchor failed"
+        else:
+            # print("The string does not contain 'F'")
+            message = " "
 
         # Only process correct packages with starting 'I'
         # if uart_buff[0] == "I":
@@ -69,7 +80,7 @@ while True:
         #         data = uart_buff
         save_packet_to_file(log_file, log_time, uart_buff)  # Save to log file
         #     if uart_buff[0] != "S":
-        print(log_time + uart_buff, end=" ")
+        print(log_time + uart_buff)
 
     except Exception:
         print("Retrying...")
