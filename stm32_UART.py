@@ -61,7 +61,7 @@ while True:
             message = " "
 
         log_content = log_time + uart_buff + message
-        save_packet_to_file(log_file, log_content)  # Save to log file
+        save_packet_to_file(log_file, log_content + '\n')  # Save to log file
         print(log_content)
 
     except Exception:
