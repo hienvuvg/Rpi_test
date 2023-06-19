@@ -60,22 +60,6 @@ while True:
         else:
             message = " "
 
-        # Only process correct packages with starting 'I'
-        # if uart_buff[0] == "I":
-        #     # Data analysis
-        #     # data from the nodes (coming from UART)
-        #     data = uart_buff
-        #     # depending on the calibration for each device
-        #     offset = 0
-
-        #     data["SOC"] = data["Vbat"]
-        #     display_log = log_time + str(data)
-        #     print(display_log)
-
-        #     save_packet_to_file(log_file, log_time, uart_buff)  # Save to log file
-        # else:
-        #     if uart_buff[0] == "A":  # We want to see 'A' packets
-        #         data = uart_buff
         log_content = log_time + uart_buff + message
         save_packet_to_file(log_file, log_content)  # Save to log file
         print(log_content)
