@@ -16,8 +16,8 @@ import serial.tools.list_ports
 log_file = "test.log"
 
 
-def save_packet_to_file(file_name, timestamp, data):
-    log_packet = timestamp + data  # Concatenate local time
+def save_packet_to_file(file_name, log_packet):
+    # log_packet = timestamp + data  # Concatenate local time
     with open(file=file_name, mode="a") as f:
         f.write(log_packet)
 
@@ -51,15 +51,13 @@ while True:
         # stop_time   = time_now.replace(hour=15, minute=29, second=30, microsecond=0)
         log_time = time_now.strftime(log_time_format)
 
-        if uart_buff.find("F") != -1:
-            # print("The string contains 'F'")
+        if uart_buff.find("F") != -1: # print("The string contains 'F'")
             message = " ==> Failed"
         elif uart_buff.find("t") != -1:
             message = " -> Test"
         elif uart_buff.find("-1") != -1:
             message = " ==> Anchor failed"
         else:
-            # print("The string does not contain 'F'")
             message = " "
 
         # Only process correct packages with starting 'I'
@@ -78,9 +76,9 @@ while True:
         # else:
         #     if uart_buff[0] == "A":  # We want to see 'A' packets
         #         data = uart_buff
-        save_packet_to_file(log_file, log_time, uart_buff)  # Save to log file
-        #     if uart_buff[0] != "S":
-        print(log_time + uart_buff + message)
+        log_content = log_time + uart_buff + message
+        save_packet_to_file(log_file, log_content)  # Save to log file
+        print(log_content)
 
     except Exception:
         print("Retrying...")
