@@ -43,7 +43,7 @@ while True:
     # if True:
     try:
         # Catch the data from UART
-        uart_buff = str(serial_port.readline(), "utf8")[:-1]
+        uart_buff = str(serial_port.readline(), "utf8")[:-2]
 
         time_now = datetime.now()
         # charge_time = time_now.replace(hour=15, minute=27, second=30, microsecond=0)
