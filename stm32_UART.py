@@ -36,7 +36,7 @@ serial_port = serial.Serial(port=UART_PORT_0, baudrate=BAUD_RATE)
 
 TIMEOUT = 2
 
-log_time_format = "%Y/%m/%d %H:%M:%S "
+log_time_format = "%Y/%m/%d %H:%M:%S | "
 
 # Read from UART and print line-by-line
 while True:
