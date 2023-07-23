@@ -51,7 +51,7 @@ while True:
         # stop_time   = time_now.replace(hour=15, minute=29, second=30, microsecond=0)
         log_time = time_now.strftime(log_time_format)
 
-        if uart_buff.find("f") != -1: # print("The string contains 'F'")
+        if uart_buff.find("fP") != -1 or uart_buff.find("fR") != -1 or uart_buff.find("fL") != -1: 
             message = " ==> Failed"
         elif uart_buff.find("t") != -1:
             message = " -> Test"
