@@ -57,6 +57,11 @@ while True:
             message = " -> Test"
         elif uart_buff.find("-1") != -1:
             message = " ==> Anchor failed"
+        elif uart_buff.find("fA") != -1:
+            if uart_buff.find("T13") != -1 or uart_buff.find("T14") != -1:
+                dummy = 1
+            else:
+                message = " ==> Anchor failed"
         else:
             message = " "
 
