@@ -61,7 +61,7 @@ while True:
             if uart_buff.find("T13") != -1 or uart_buff.find("T14") != -1:
                 dummy = 1
             else:
-                message = " ==> Anchor failed"
+                message = " ==> Failed"
         else:
             message = " "
 
